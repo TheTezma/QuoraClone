@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+body {
+	background-color: #fff;
+}
+
+.navigation {
+	background-color: #fff;
+	height: 50px;
+	line-height: 45px;
+	border-top: 2px solid #3b5998;
+	border-bottom: 1px solid #eee;
+	box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+}
+
+.navcontainer {
+	padding: 0;
+	margin: 0 auto;
+	width: 1000px;
+	height: auto;
+}
+
+.search-container {
+	display: inline-block;
+	line-height: 25px;
+}
+
+.navigation ul {
+	padding: 0;
+	height: auto;
+	display: inline-block;
+	margin:0;
+}
+
+.navigation ul.search-nav {
+	padding: 0px 10px;
+}
+
+.navigation ul.search-nav li input {
+	font-size: 16px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	border:1px solid #e2e2e2;
+	background-color: #f4f4f4;
+	font-weight: 200;
+	padding: 0 8px;
+	border-radius: 3px;
+	display: block;
+	outline: none;
+	margin-right: -1px;
+}
+
+.search {
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+	width: 300px;
+}
+
+.search-btn {
+	border-bottom-left-radius: 0px !important;
+	border-top-left-radius: 0px !important;
+	background-color: white !important;
+	box-shadow: none !important; 
+}
+
+.navigation li {
+	list-style-type: none;
+	display: inline-block;
+}
+
+.navigation li a {
+	display: block;
+	font-weight: 500;
+	color: #999;
+	padding: 0 10px;
+	text-decoration: none;
+	font-size: 18px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.navigation li a:hover {
+	color: #3b5998;
+}
+
+.logo {
+	font-size: 24px !important;
+	color: #3b5998 !important;
+}
+
+.dropbtn:hover {
+	cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 120px;
+    overflow: auto;
+    margin-top: 2px;
+    border:1px solid #eee;
+    box-shadow:0 3px 2px -2px rgba(200,200,200,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #999;
+    padding: 0px 16px;
+    text-decoration: none !important;
+    display: block;
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.dropdown-content a:hover {background-color: #eee !important}
+
+.show {display:block;}
+
+.container-fluid {
+	width: 1000px;
+	margin:0 auto;
+	height: auto;
+	padding: 0;
+	padding-top: 25px;
+}
+
+.col-sm-6 {
+	padding: 0 !important;
+}
+
+.col-sm-3:first-child {
+	padding-left: 0;
+}
+
+.col-sm-3:last-child {
+	padding-right: 0;
+}

@@ -1,0 +1,11 @@
+RewriteEngine ON
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^post/([a-zA-Z0-9_-]+)$ index.php?controller=posts&action=show&id=$1 [QSA,L]
+RewriteRule ^login$ index.php?controller=pages&action=login [L]
+RewriteRule ^register$ index.php?controller=pages&action=register [L]
+RewriteRule ^logout$ index.php?controller=users&action=logout [L]
+RewriteRule ^user-login$ index.php?controller=users&action=login [L]
+RewriteRule ^user-register$ index.php?controller=users&action=register [L]
