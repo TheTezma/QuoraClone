@@ -316,8 +316,23 @@ class User {
     public static function accountsetup() {
         $db = Db::getInstance();
 
-        $stmt = $db->query("SELECT * FROM accountsetup WHERE id = :id");
-        $stmt->execute(array(':id' => $_SESSION['user']['id']));
+        $sessid = $_SESSION['user']['id'];
+
+        $stmt = $db->query("SELECT * FROM posts WHERE author = '$sessid'");
+        $stmt->execute();
+        $rows = $stmt->rowCount();
+
+        if($rows >= 1):
+            ?>  <span>
+                    <span class="checked">&#10004;</span>
+                    <strike>Ask your first question</strike>
+                </span> <?php
+        elseif($rows == 0):
+            ?>  <span>
+                    <span class="unchecked">&#10004;</span>
+                    <a href="new-post">Ask your first question</a>
+                </span> <?php
+        endif;
     }
 
 }

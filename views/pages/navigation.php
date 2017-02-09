@@ -26,7 +26,7 @@
 					<div id="myDropdown" class="dropdown-content">
 						<a href="#">Link 1</a>
 						<a href="#">Link 2</a>
-						<a href="logout.php">Logout</a>
+						<a href="logout">Logout</a>
 					</div>
 				<?php
 			}

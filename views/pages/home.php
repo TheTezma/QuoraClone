@@ -28,7 +28,7 @@
 		  		if(empty($_SESSION['user'])) {
 					
 				} else {
-					?> <button>Upvote | <?= $post->upvotes ?></button> <?php
+					?> <button class="upvote-btn">Upvote | <?= $post->upvotes ?></button> <?php
 				}
 				?>
 		  	</div>
@@ -41,7 +41,9 @@
 					Set Up Your Account
 				</div>
 				<div class="panel-body">
-					
+				<?php
+				$User::accountsetup();
+				?>
 				</div>
 			</div>
 		</div>

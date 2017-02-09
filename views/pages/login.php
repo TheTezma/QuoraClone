@@ -1,4 +1,4 @@
-<form action="/StackOverflow/">
+<form action="/QuoraClone/">
 	<input type="text" name="controller" value="users" hidden>
 	<input type="text" name="action" value="login" hidden>
 	<input type="text" name="username" placeholder="Username">
