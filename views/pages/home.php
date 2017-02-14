@@ -14,16 +14,15 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
+			<div class="panel-test">
+				<a href="#">What is your question?</a>
+			</div>
 		<?php foreach($posts as $post) { ?>
-		  <div class="panel panel-default">
-		  	<div class="panel-heading">
+		  <div class="post-panel">
+		  	<div class="post-panel-heading">
 		  		<?= $post->title; ?>
-		  			
-		  		</div>
-		  	<div class="panel-body">
-		  		<p><?= $post->content; ?></p>
-		  		</div>
-		  	<div class="panel-footer">
+		  	</div>
+		  	<div class="post-panel-footer">
 		  		<?php
 		  		if(empty($_SESSION['user'])) {
 					

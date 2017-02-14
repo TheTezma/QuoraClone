@@ -164,3 +164,28 @@ body {
 .checked {
 	color: #00c431;
 }
+
+.panel-test {
+	border-bottom: 1px solid #eee;
+	padding: 5px;
+	font-size: 24px;
+	color: #666;
+	font-family: 'Helvetica', sans-serif;
+}
+
+.post-panel {
+	border-bottom: 1px solid #eee;
+}
+
+.post-panel:hover {
+	background-color: #fafafa;
+}
+
+.post-panel-heading {
+	padding: 5px;
+	font-family: 'Helvetica', sans-serif;
+}
+
+.post-panel-footer {
+	padding: 5px;
+}
