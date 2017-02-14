@@ -17,3 +17,9 @@ window.onclick = function(event) {
     }
   }
 }
+
+var app = angular.module("QuoraClone", []);
+
+app.controller("MainLayout", function($scope) {
+  $scope.AppName = "QuoraClone";
+});

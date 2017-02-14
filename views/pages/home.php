@@ -35,16 +35,24 @@
 		<?php } ?>
 		</div>
 		<div class="col-sm-3">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					Set Up Your Account
-				</div>
-				<div class="panel-body">
-				<?php
-				$User::accountsetup();
+			<?php
+			if(empty($_SESSION['user'])) {
+
+			} else {
 				?>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Set Up Your Account
+					</div>
+					<div class="panel-body">
+					<?php
+					$User::accountsetup();
+					?>
 				</div>
 			</div>
+				<?php
+			}
+			?>
 		</div>
 	</div>
 </div>
