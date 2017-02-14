@@ -13,15 +13,15 @@
 		</div>
 		<ul class="right-nav pull-right">
 			<li><a href="/QuoraClone">Home</a></li>
-			<li><a href="/QuoraClone/notifications">Notifications</a></li>
 			<?php
 			$User = new User;
 			$User->isLoggedIn();
 
 			if(empty($_SESSION['user'])) {
-				?> <li><a href="login">Login/Register</a></li> <?php
+				?> <li><a href="/QuoraClone/login">Login</a></li> <?php
 			} else {
-				?> <li><a href="/QuoraClone/new-post">New Post</a></li> 
+				?> <li><a href="/QuoraClone/notifications">Notifications</a></li>
+					<li><a href="/QuoraClone/new-post">New Post</a></li> 
 					<li><a onclick="myFunction()" class="dropbtn"><?= $_SESSION['user']['username'] ?></a></li> 
 					<div id="myDropdown" class="dropdown-content">
 						<a href="#">Link 1</a>

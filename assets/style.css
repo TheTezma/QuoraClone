@@ -168,9 +168,18 @@ body {
 .panel-test {
 	border-bottom: 1px solid #eee;
 	padding: 5px;
-	font-size: 24px;
-	color: #666;
+}
+
+.panel-test a {
+	font-size: 20px;
+	color: #777;
 	font-family: 'Helvetica', sans-serif;
+	text-decoration: none;
+}
+
+.panel-test a:hover {
+	text-decoration: none;
+	color: #555;
 }
 
 .post-panel {
@@ -188,4 +197,14 @@ body {
 
 .post-panel-footer {
 	padding: 5px;
+}
+
+.post-title {
+	font-size: 20px;
+	font-family: Arial;
+	color: black;
+}
+
+.post-title:hover {
+	color: black;
 }
