@@ -16,5 +16,6 @@
       $post = Post::find($_GET['id']);
       require_once('views/posts/show.php');
     }
+
   }
 ?>

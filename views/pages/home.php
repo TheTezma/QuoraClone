@@ -15,12 +15,12 @@
 		</div>
 		<div class="col-sm-6">
 			<div class="panel-test">
-				<a href="#">What is your question?</a>
+				<a href="/QuoraClone/new-post">What is your question?</a>
 			</div>
 		<?php foreach($posts as $post) { ?>
 		  <div class="post-panel">
 		  	<div class="post-panel-heading">
-		  		<a href="/QuoraClone/post/<?= $post->id; ?>" class="post-title"><?= $post->title; ?></a>
+		  		<a href="/QuoraClone/post/<?= $post->id ?>" class="post-title"><?= $post->title; ?></a>
 		  	</div>
 		  	<div class="post-panel-footer">
 		  		<?php

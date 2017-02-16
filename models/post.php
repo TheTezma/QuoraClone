@@ -6,13 +6,15 @@
     public $title;
     public $author;
     public $content;
+    public $timestamp;
     public $upvotes;
 
-    public function __construct($id, $title, $author, $content, $upvotes) {
+    public function __construct($id, $title, $author, $content, $timestamp, $upvotes) {
       $this->id      = $id;
       $this->title   = $title;
       $this->author  = $author;
       $this->content = $content;
+      $this->timestamp = $timestamp;
       $this->upvotes = $upvotes;
     }
 
@@ -27,6 +29,7 @@
                            $post['title'],
                            $post['author'],
                            $post['content'],
+                           $post['timestamp'],
                            $post['upvotes']);
       }
 
@@ -46,7 +49,26 @@
                       $post['title'],
                       $post['author'],
                       $post['content'],
+                      $post['timestamp'],
                       $post['upvotes']);
+    }
+
+    public static function newest() {
+      $list = [];
+      $db = Db::getInstance();
+      $req = $db->query('SELECT * FROM posts ORDER BY timestamp DESC LIMIT 10');
+
+      // we create a list of Post objects from the database results
+      foreach($req->fetchAll() as $newest) {
+        $list[] = new Post($newest['id'],
+                           $newest['title'],
+                           $newest['author'],
+                           $newest['content'],
+                           $newest['timestamp'],
+                           $newest['upvotes']);
+      }
+
+      return $list;
     }
   }
 ?>
