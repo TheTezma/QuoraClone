@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 09, 2017 at 10:14 AM
+-- Generation Time: Feb 17, 2017 at 08:55 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `topic_id` int(11) NOT NULL,
+  `topic` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `timestamp` int(50) NOT NULL,
@@ -40,9 +40,11 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `topic_id`, `title`, `content`, `timestamp`, `author`, `upvotes`) VALUES
-(1, 1, 'Test Post', 'test tine tadaga jksdf', 0, 1, 0),
-(2, 1, 'TEST 2', 'TEAI HADSFL SLDFA', 0, 1, 0);
+INSERT INTO `posts` (`id`, `topic`, `title`, `content`, `timestamp`, `author`, `upvotes`) VALUES
+(13, 'Software Development', 'asdf asdf', 'asd fasdf as', 1487312862, 2, 0),
+(14, 'Software Development', 'asd fasdfasdfas dfasdf asdfa sd', 'a 23 23231 4', 1487312871, 2, 0),
+(15, 'Software Development', 'o 878fasd8 f7asdf', 'a 89s7df098a7sd08f 9a', 1487312884, 2, 0),
+(16, 'Software Development', ' s8df8a sdmufasdfa', ' 3rsd fsa', 1487312891, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -63,8 +65,8 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`id`, `name`, `description`, `score`, `post_count`) VALUES
-(1, 'Web Development', 'Anything to do with Web Development', 1406, 2),
-(2, 'Software Development', 'Anything related to software development', 1400, 0);
+(1, 'Web Development', 'Anything to do with Web Development', 1409, 3),
+(2, 'Software Development', 'Anything related to software development', 1412, 4);
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `salt`) VALUES
-(2, 'Chris', 'tezma909@gmail.com', '40540265dfd44fcea76f1abe2e05d76d8c709f72bc4cbc4d3454d672cfe5ba29', '1f5194f1501a95ed');
+(2, 'Chris', 'tezma909@gmail.com', '40540265dfd44fcea76f1abe2e05d76d8c709f72bc4cbc4d3454d672cfe5ba29', '1f5194f1501a95ed'),
+(3, 'Admin', 'admin@gmail.com', 'b78aef2fa4cb534865311bfc1bf1c2a2761c499db7828c2db06dc58d980a0f35', '2f0513ae6d38492');
 
 --
 -- Indexes for dumped tables
@@ -119,7 +122,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `topics`
 --
@@ -129,7 +132,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
