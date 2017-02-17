@@ -96,7 +96,7 @@
       $Upvotes = $stmt3->fetch();
 
       if($UserLiked < 1) {
-        echo "0";
+        echo "8";
       } else {
         echo "1";
       }
@@ -109,10 +109,6 @@
 
       $UserLiked = $req->rowCount();
 
-      $stmt3 = $db->prepare("SELECT * FROM posts WHERE id = ?");
-        $stmt3->execute([$voteID]);
-        $Upvotes = $stmt3->fetch();
-      
       if($UserLiked < 1) {
         $Timestamp = Time();
         $stmt = $db->prepare("INSERT INTO upvotes (post_id, user_id, timestamp) VALUES (?,?, '$Timestamp')");
@@ -121,9 +117,41 @@
         $stmt2 = $db->prepare("UPDATE posts SET upvotes = upvotes + 1 WHERE id = ?");
         $stmt2->execute([$voteID]);
 
+        $stmt3 = $db->prepare("SELECT * FROM posts WHERE id = ?");
+        $stmt3->execute([$voteID]);
+        $Upvotes = $stmt3->fetch();
+
+        $stmt4 = $db->prepare("UPDATE topics SET score = score + 2 WHERE name = ?");
+        $UpvoteID = $Upvotes['topic'];
+        $stmt4->execute([$UpvoteID]);
+
         echo "Upvoted | " . $Upvotes['upvotes'];
+        ?>
+        <script>
+          $("#" + <?= $voteID ?>).attr('class', 'upvoted-btn');
+        </script>
+        <?php
       } else {
+        $stmt = $db->prepare("DELETE FROM upvotes WHERE post_id = ? AND user_id = ?");
+        $stmt->execute([$voteID, $UserID]);
+
+        $stmt2 = $db->prepare("UPDATE posts SET upvotes = upvotes - 1 WHERE id = ?");
+        $stmt2->execute([$voteID]);
+
+        $stmt3 = $db->prepare("SELECT * FROM posts WHERE id = ?");
+        $stmt3->execute([$voteID]);
+        $Upvotes = $stmt3->fetch();
+
+        $stmt4 = $db->prepare("UPDATE topics SET score = score - 2 WHERE name = ?");
+        $UpvoteID = $Upvotes['topic'];
+        $stmt4->execute([$UpvoteID]);
+
         echo "Upvote | " . $Upvotes['upvotes'];
+        ?>
+        <script>
+          $("#" + <?= $voteID ?>).attr('class', 'upvote-btn');
+        </script>
+        <?php
       }
 
     }

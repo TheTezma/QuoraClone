@@ -29,9 +29,21 @@
 				} else {
 					$voteID = $post->id;
 					$UserID = $_SESSION['user']['id'];
-					?>
-					<button id="<?= $post->id ?>" onclick="Vote(<?= $post->id ?>)" class="upvote-btn vote">Upvote | <?= $post->upvotes ?></button>
-					<?php
+
+					$db = Db::getInstance();
+					$stmt = $db->prepare("SELECT * FROM upvotes WHERE post_id = ? AND user_id = ?");
+					$stmt->execute([$voteID, $UserID]);
+					$Rows = $stmt->rowCount();
+
+					if($Rows < 1) {
+						?>
+						<button id="<?= $post->id ?>" onclick="Vote(<?= $post->id ?>)" class="upvote-btn vote">Upvote | <?= $post->upvotes ?></button>
+						<?php
+					} else {
+						?>
+						<button id="<?= $post->id ?>" onclick="Vote(<?= $post->id ?>)" class="upvoted-btn vote">Upvoted | <?= $post->upvotes ?></button>
+						<?php
+					}
 				}
 				?>
 		  	</div>
