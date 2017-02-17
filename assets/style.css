@@ -208,3 +208,12 @@ body {
 .post-title:hover {
 	color: black;
 }
+
+textarea {
+	resize: none !important;
+	overflow: hidden;
+}
+
+form {
+	margin: 0;
+}

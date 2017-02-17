@@ -70,5 +70,18 @@
 
       return $list;
     }
+
+    public static function newpost($Topic, $Title, $Content, $Timestamp, $Author) {
+        $db = Db::getInstance();
+        $req = $db->prepare('INSERT INTO posts (topic, title, content, timestamp, author)
+                           VALUES (?,?,?,?,?)');
+        $req->execute([$Topic, $Title, $Content, $Timestamp, $Author]);
+
+        $sql = "UPDATE topics SET score = score + ?, post_count = post_count + 1 WHERE name = ?";
+        $db->prepare($sql)->execute(["3", $Topic]);
+
+        header("Location: /QuoraClone");
+        return call('pages', 'home');
+    }
   }
 ?>

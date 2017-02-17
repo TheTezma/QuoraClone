@@ -18,6 +18,12 @@ window.onclick = function(event) {
   }
 }
 
+onKeyPressTextMessage = function(){
+      var textArea = event.currentTarget;
+      textArea.style.height = 'auto';
+      textArea.style.height = textArea.scrollHeight + 5 + 'px';
+};
+
 var app = angular.module("QuoraClone", []);
 
 app.controller("MainLayout", function($scope) {

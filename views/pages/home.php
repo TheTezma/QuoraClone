@@ -3,7 +3,7 @@
 		<div class="col-sm-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Trending Topics
+					Top Topics
 				</div>
 				<div class="panel-body">
 				<?php

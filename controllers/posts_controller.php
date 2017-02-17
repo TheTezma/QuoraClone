@@ -17,5 +17,22 @@
       require_once('views/posts/show.php');
     }
 
+    public function newpost() {
+        if(!isset($_GET['title']))
+            return call('pages', 'error');
+
+        if(isset($_GET['content']))
+          $postContext = $_GET['content'];
+        else
+          $postContext = "NULL";
+
+        $postTitle = $_GET['title'];
+        $postUserID = $_SESSION['user']['id'];
+        $postTopic = $_GET['topic'];
+        $postTimestamp = Time();
+
+        Post::newpost($postTopic, $postTitle, $postContext, $postTimestamp, $postUserID);
+    }
+
   }
 ?>
