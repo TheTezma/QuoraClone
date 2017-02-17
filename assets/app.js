@@ -1,3 +1,7 @@
+$(document).ready(function() {
+
+});
+
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
     document.getElementById("username").classList.toggle("active");
@@ -23,6 +27,26 @@ onKeyPressTextMessage = function(){
       textArea.style.height = 'auto';
       textArea.style.height = textArea.scrollHeight + 5 + 'px';
 };
+
+function VoteCheck() {
+  var id = $(".vote").attr("id");
+
+  $.ajax({
+    url: '/QuoraClone/check/' + id,
+    success: function(data) {
+      $("#" + id).html(data);
+    }
+  })
+}
+
+function Vote(id) {
+  $.ajax({
+    url: '/QuoraClone/vote/' + id,
+    success: function(data) {
+      $("#" + id).html(data);
+    }
+  })
+}
 
 var app = angular.module("QuoraClone", []);
 

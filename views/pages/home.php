@@ -27,7 +27,11 @@
 		  		if(empty($_SESSION['user'])) {
 					
 				} else {
-					?> <button class="upvote-btn">Upvote | <?= $post->upvotes ?></button> <?php
+					$voteID = $post->id;
+					$UserID = $_SESSION['user']['id'];
+					?>
+					<button id="<?= $post->id ?>" onclick="Vote(<?= $post->id ?>)" class="upvote-btn vote">Upvote | <?= $post->upvotes ?></button>
+					<?php
 				}
 				?>
 		  	</div>

@@ -83,5 +83,49 @@
         header("Location: /QuoraClone");
         return call('pages', 'home');
     }
+
+    public static function voteCheck($voteID, $UserID) {
+      $db = Db::getInstance();
+      $req = $db->prepare("SELECT * FROM upvotes WHERE post_id = ? AND user_id = ?");
+      $req->execute([$voteID, $UserID]);
+
+      $UserLiked = $req->rowCount();
+
+      $stmt3 = $db->prepare("SELECT * FROM posts WHERE id = ?");
+      $stmt3->execute([$voteID]);
+      $Upvotes = $stmt3->fetch();
+
+      if($UserLiked < 1) {
+        echo "0";
+      } else {
+        echo "1";
+      }
+    }
+
+    public static function vote($voteID, $UserID) {
+      $db = Db::getInstance();
+      $req = $db->prepare("SELECT * FROM upvotes WHERE post_id = ? AND user_id = ?");
+      $req->execute([$voteID, $UserID]);
+
+      $UserLiked = $req->rowCount();
+
+      $stmt3 = $db->prepare("SELECT * FROM posts WHERE id = ?");
+        $stmt3->execute([$voteID]);
+        $Upvotes = $stmt3->fetch();
+      
+      if($UserLiked < 1) {
+        $Timestamp = Time();
+        $stmt = $db->prepare("INSERT INTO upvotes (post_id, user_id, timestamp) VALUES (?,?, '$Timestamp')");
+        $stmt->execute([$voteID, $UserID]);
+
+        $stmt2 = $db->prepare("UPDATE posts SET upvotes = upvotes + 1 WHERE id = ?");
+        $stmt2->execute([$voteID]);
+
+        echo "Upvoted | " . $Upvotes['upvotes'];
+      } else {
+        echo "Upvote | " . $Upvotes['upvotes'];
+      }
+
+    }
   }
 ?>

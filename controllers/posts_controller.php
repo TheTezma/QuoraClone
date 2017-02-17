@@ -34,5 +34,22 @@
         Post::newpost($postTopic, $postTitle, $postContext, $postTimestamp, $postUserID);
     }
 
+    public function vote() {
+      if(!isset($_GET['id']))
+        return call('pages', 'error');
+
+      $voteID = $_GET['id'];
+      $UserID = $_SESSION['user']['id'];
+
+      Post::vote($voteID, $UserID);
+    }
+
+    public function check() {
+      $voteID = $_GET['id'];
+      $UserID = $_SESSION['user']['id'];
+
+      Post::voteCheck($voteID, $UserID);
+    }
+
   }
 ?>
