@@ -4,7 +4,7 @@ class Topic {
 
 	public static function trendingtopics() {
 		$db = Db::getInstance();
-		$stmt = $db->query("SELECT * FROM topics ORDER BY post_count DESC limit 5");
+		$stmt = $db->query("SELECT * FROM topics ORDER BY score DESC limit 5");
 		$trending = $stmt->fetchAll();
 
 		foreach($trending as $trendtopic) { ?>

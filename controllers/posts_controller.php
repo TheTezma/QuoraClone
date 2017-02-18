@@ -1,55 +1,52 @@
 <?php
-  class PostsController {
+class PostsController {
+    
     public function index() {
-      // we store all the posts in a variable
-      $posts = Post::all();
-      require_once('views/posts/index.php');
+        $posts = Post::all();
+        require_once('views/posts/index.php');
     }
-
+    
     public function show() {
-      // we expect a url of form ?controller=posts&action=show&id=x
-      // without an id we just redirect to the error page as we need the post id to find it in the database
-      if (!isset($_GET['id']))
-        return call('pages', 'error');
-
-      // we use the given id to get the right post
-      $post = Post::find($_GET['id']);
-      require_once('views/posts/show.php');
+        if(!isset($_GET['id']))
+            return call('pages', 'error');
+        
+        $post = Post::find($_GET['id']);
+        require_once('views/posts/show.php');
     }
-
+    
     public function newpost() {
         if(!isset($_GET['title']))
             return call('pages', 'error');
-
+        
         if(isset($_GET['content']))
-          $postContext = $_GET['content'];
+            $postContext = $_GET['content'];
         else
-          $postContext = "NULL";
-
-        $postTitle = $_GET['title'];
-        $postUserID = $_SESSION['user']['id'];
-        $postTopic = $_GET['topic'];
+            $postContext = "NULL";
+        
+        $postTitle     = $_GET['title'];
+        $postUserID    = $_SESSION['user']['id'];
+        $postTopic     = $_GET['topic'];
         $postTimestamp = Time();
-
+        
         Post::newpost($postTopic, $postTitle, $postContext, $postTimestamp, $postUserID);
     }
-
+    
     public function vote() {
-      if(!isset($_GET['id']))
-        return call('pages', 'error');
-
-      $voteID = $_GET['id'];
-      $UserID = $_SESSION['user']['id'];
-
-      Post::vote($voteID, $UserID);
+        if(!isset($_GET['id']))
+            return call('pages', 'error');
+        
+        $voteID = $_GET['id'];
+        $UserID = $_SESSION['user']['id'];
+        
+        Post::vote($voteID, $UserID);
     }
-
+    
     public function check() {
-      $voteID = $_GET['id'];
-      $UserID = $_SESSION['user']['id'];
-
-      Post::voteCheck($voteID, $UserID);
+        $voteID = $_GET['id'];
+        $UserID = $_SESSION['user']['id'];
+        
+        Post::voteCheck($voteID, $UserID);
     }
-
-  }
+    
+}
 ?>
