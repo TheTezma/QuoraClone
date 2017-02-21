@@ -1,3 +1,7 @@
+<?
+$Mustache = new Mustache_Engine;
+// echo $Mustache->render('Hello, {{planet}}!', array('planet' => 'World'));
+?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3">

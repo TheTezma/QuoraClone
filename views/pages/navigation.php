@@ -22,7 +22,12 @@
 			} else {
 				?> <li><a href="/QuoraClone/notifications">Notifications</a></li>
 					<li><a href="/QuoraClone/new-post">New Post</a></li> 
-					<li><a onclick="myFunction()" class="dropbtn"><?= $_SESSION['user']['username'] ?></a></li> 
+					<li><a onclick="myFunction()" class="dropbtn">
+							<? 
+							$Mustache = new Mustache_Engine;
+							echo $Mustache->render('{{username}}', array('username' => $_SESSION['user']['username']));
+							?>
+					</a></li> 
 					<div id="myDropdown" class="dropdown-content">
 						<a href="#">Link 1</a>
 						<a href="#">Link 2</a>

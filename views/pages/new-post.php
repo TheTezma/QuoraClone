@@ -32,11 +32,11 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Latest Posts</div>
 				<div class="panel-body">
-					<?php
+					<?
 					foreach($newest as $new) {
-						?>
-						<a href="/QuoraClone/post/<?= $new->id ?>"><?= $new->title ?></a><br>
-						<?php
+						echo $Mustache->render('<a href="/QuoraClone/post/{{newid}}">{{newtitle}}</a><br>', 
+										array('newid' => $new->id,
+											  'newtitle' => $new->title));
 					}
 					?>
 				</div>

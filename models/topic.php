@@ -2,6 +2,11 @@
 
 class Topic {
 
+	public $id;
+	public $name;
+	public $score;
+	public $posts;
+
 	public static function trendingtopics() {
 		$db = Db::getInstance();
 		$stmt = $db->query("SELECT * FROM topics ORDER BY score DESC limit 5");
